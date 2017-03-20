@@ -1,21 +1,10 @@
-Node[] listOfNodes =  { 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1)), 
-  new Node(random(255), random(255), random(1),random(1))
-};
+ArrayList<Node> listOfNodes = new ArrayList<Node>();
 
 void setup(){
   size(300,300);
-  
+  for (int i = 0; i < 5; i++){
+    listOfNodes.add(new Node(random(255), random(255), random(1),random(1)));
+  }
 }
 
 void draw(){
@@ -29,9 +18,14 @@ void draw(){
     
     n.display();
   }
+
   
   
   
+}
+
+void mouseReleased() {
+  listOfNodes.add(new Node(mouseX, mouseY, random(1),random(1)));
 }
 
 class Node {
@@ -87,6 +81,8 @@ void linking(Node n1, Node n2){
      line(n1.x, n1.y, n2.x, n2.y);
    }
  }
+ 
+
  
  
  
