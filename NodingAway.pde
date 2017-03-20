@@ -1,8 +1,16 @@
 Node[] listOfNodes =  { 
-  new Node(random(255), random(255), random(2),random(2)), 
-  new Node(random(255), random(255), random(2),random(2)), 
-  new Node(random(255), random(255), random(2),random(2)), 
-  new Node(random(255), random(255), random(2),random(2))
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1)), 
+  new Node(random(255), random(255), random(1),random(1))
 };
 
 void setup(){
@@ -14,10 +22,12 @@ void draw(){
   background(255);
   for(Node n : listOfNodes){
     n.move();
-    n.display();
+    
     for(Node m : listOfNodes){
       linking(n, m);
-    }
+    };
+    
+    n.display();
   }
   
   
@@ -70,8 +80,10 @@ class Node {
  }
  
 void linking(Node n1, Node n2){
-   if (dist(n1.x, n1.y, n2.x, n2.y) <136) {
-     stroke(126);
+   float distance = dist(n1.x, n1.y, n2.x, n2.y);
+   
+   if (distance < 70){
+     stroke(map(distance, 0, 70, 150, 255));
      line(n1.x, n1.y, n2.x, n2.y);
    }
  }
