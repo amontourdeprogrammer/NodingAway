@@ -1,13 +1,23 @@
 ArrayList<Node> listOfNodes = new ArrayList<Node>();
+JSONObject json;
 
 void setup(){
+  
   size(300,300);
-  for (int i = 0; i < 5; i++){
-    listOfNodes.add(new Node(random(255), random(255), random(1),random(1)));
+  json = loadJSONObject("http://communaute.amontourdeprogrammer.fr/posts.json?api_key=d4fb34eff83af60a16791e0807c39c2dfbfcc8a81005536dd9c432fe6ca8f6de&api_username=Anna-Livia");
+
+  JSONArray values = json.getJSONArray("latest_posts");
+  
+  for (int i = 0; i < values.size(); i++){
+    JSONObject post = values.getJSONObject(i); 
+    int category_id = post.getInt("category_id");
+    println(category_id);
+    listOfNodes.add(new Node(random(255), random(255), random(1),random(1), category_id));
   }
 }
 
 void draw(){
+  colorMode(RGB, 255);
   background(255);
   for(Node n : listOfNodes){
     n.move();
@@ -18,15 +28,8 @@ void draw(){
     
     n.display();
   }
-
-  
-
-  
 }
 
-void mouseReleased() {
-  listOfNodes.add(new Node(mouseX, mouseY, random(1),random(1)));
-}
 
 class Node {
   
@@ -34,12 +37,14 @@ class Node {
   float y;
   float xspeed;
   float yspeed;
+  int nodecolor;
   
-  Node(float tempX, float tempY, float tempxspeed, float tempyspeed) {
+  Node(float tempX, float tempY, float tempxspeed, float tempyspeed, int tempnodecolor) {
     x = tempX;
     y = tempY;
     xspeed = tempxspeed;
     yspeed = tempyspeed;
+    nodecolor = tempnodecolor;
   }
   
     void move() {
@@ -67,7 +72,8 @@ class Node {
 
   void display() {
     // Display the circle
-    fill(149,149,149, 149);
+    colorMode(HSB, 15);
+    fill(nodecolor, 12, 10);
     noStroke();
     ellipse(x,y,10,10);
   }
@@ -77,6 +83,7 @@ void linking(Node n1, Node n2){
    float distance = dist(n1.x, n1.y, n2.x, n2.y);
    
    if (distance < 70){
+     colorMode(RGB, 255);
      stroke(map(distance, 0, 70, 150, 255));
      line(n1.x, n1.y, n2.x, n2.y);
    }
