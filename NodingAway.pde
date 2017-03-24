@@ -10,13 +10,12 @@ void setup(){
         int category_id = topic.get(0);
         int topic_id = topic.get(1);
         int post_count = topic.get(2);
+        //String topic_title = topic.getSring(4);
         println(post_count);
         listOfNodes.add(new Node(random(200) + 200, random(200) + 200, 10/recent, 5/recent, category_id, topic_id));
       }
     
    }
-
-
 
 void draw(){
   colorMode(RGB, 255);
@@ -32,11 +31,23 @@ void draw(){
     
     n.display();
   }
+  if (mousePressed){
+  for (Node n : listOfNodes){
+    if (n.x <= mouseX+10 && n.x >= mouseX-10 && n.y <= mouseY+10 && n.y >= mouseY-10){
+     n.xspeed = 0;
+     n.yspeed = 0;
+     n.node_size = 50;
+     textSize(32);
+     text("infos", n.x, n.y);
+     }
+    }
+  }
 }
+  
 
 
 
- 
+
 void linking(Node n1, Node n2){
    float distance = dist(n1.x, n1.y, n2.x, n2.y);
    colorMode(RGB, 255);

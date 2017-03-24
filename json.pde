@@ -16,6 +16,11 @@ ArrayList<IntList> dealwithjson(){
       JSONObject topic = topic_list.getJSONObject(j);
       int post_count = topic.getInt("posts_count");
       int topic_id = topic.getInt("id");
+      String topic_title = topic.getString("slug");
+      println(post_count);
+      println(topic_id);
+      println(topic_title);
+      
       
       String timepost;
       if (topic.isNull("last_posted_at")){

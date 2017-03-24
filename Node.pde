@@ -6,6 +6,8 @@ class Node {
   float yspeed;
   int nodecolor;
   int topic_id;
+  int node_size;
+ // String topic_title;
   
   Node(float tempX, float tempY, float tempxspeed, float tempyspeed, int tempnodecolor, int temptopic_id) {
     x = tempX;
@@ -14,6 +16,8 @@ class Node {
     yspeed = tempyspeed;
     nodecolor = tempnodecolor;
     topic_id = temptopic_id;
+    node_size = 10;
+    
   }
   
     void move() {
@@ -44,6 +48,6 @@ class Node {
     colorMode(HSB, 15);
     fill(nodecolor, 15, 10);
     noStroke();
-    ellipse(x,y,10,10);
+    ellipse(x,y,node_size,node_size);
   }
  }
