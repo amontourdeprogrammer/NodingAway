@@ -7,6 +7,8 @@ class Node {
   int nodecolor;
   int topic_id;
   int node_size;
+ // String topic_title;
+  
   
   Node(float tempX, float tempY, float tempxspeed, float tempyspeed, int tempnodecolor, int temptopic_id, int tempnode_size) {
     x = tempX;
@@ -16,6 +18,9 @@ class Node {
     nodecolor = tempnodecolor;
     topic_id = temptopic_id;
     node_size = tempnode_size;
+
+    
+
   }
   
     void move() {
