@@ -40,7 +40,7 @@ ArrayList<IntList> dealwithjson(){
       
         }
       IntList listOfInt = new IntList();
-      println("#######");
+
       listOfInt.append(category_id);
       listOfInt.append(topic_id);
       listOfInt.append(post_count);
@@ -50,5 +50,6 @@ ArrayList<IntList> dealwithjson(){
       
     }
   }
+
   return listoftopics;  
 }

@@ -6,14 +6,16 @@ class Node {
   float yspeed;
   int nodecolor;
   int topic_id;
+  int node_size;
   
-  Node(float tempX, float tempY, float tempxspeed, float tempyspeed, int tempnodecolor, int temptopic_id) {
+  Node(float tempX, float tempY, float tempxspeed, float tempyspeed, int tempnodecolor, int temptopic_id, int tempnode_size) {
     x = tempX;
     y = tempY;
     xspeed = tempxspeed;
     yspeed = tempyspeed;
     nodecolor = tempnodecolor;
     topic_id = temptopic_id;
+    node_size = tempnode_size;
   }
   
     void move() {
@@ -44,6 +46,6 @@ class Node {
     colorMode(HSB, 15);
     fill(nodecolor, 15, 10);
     noStroke();
-    ellipse(x,y,10,10);
+    ellipse(x,y,node_size*4,node_size*4);
   }
  }
